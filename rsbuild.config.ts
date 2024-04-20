@@ -5,8 +5,9 @@ import million from "million/compiler";
 export default defineConfig({
   plugins: [pluginReact()],
   tools: {
-    rspack: {
-      plugins: [million.rspack({ auto: true })],
+    rspack: (config, { appendPlugins, isProd }) => {
+      isProd && appendPlugins(million.rspack({ auto: true, telemetry: false }));
+      return config;
     },
   },
 });
