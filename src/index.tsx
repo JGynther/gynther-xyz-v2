@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
-import Wrapper from "@components/wrapper";
+import StyleWrapper from "@components/wrapper";
 
 import "./index.css";
 
@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById("root")!);
 
 root.render(
   <React.StrictMode>
-    <Wrapper>
+    <StyleWrapper>
       <RouterProvider router={router} />
-    </Wrapper>
+    </StyleWrapper>
   </React.StrictMode>
 );

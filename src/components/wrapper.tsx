@@ -1,11 +1,11 @@
 import { type PropsWithChildren } from "react";
 
-const Wrapper = ({ children }: PropsWithChildren) => {
+const StyleWrapper = ({ children }: PropsWithChildren) => {
   return (
-    <div className="h-full bg-neutral-900 text-white min-h-screen">
+    <div className="h-screen bg-neutral-900 text-white overflow-auto box-border p-5 md:p-10">
       {children}
     </div>
   );
 };
 
-export default Wrapper;
+export default StyleWrapper;
