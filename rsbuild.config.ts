@@ -4,6 +4,9 @@ import million from "million/compiler";
 import UnoCSS from "@unocss/postcss";
 
 export default defineConfig({
+  html: {
+    title: "Joona Gynther",
+  },
   plugins: [pluginReact()],
   tools: {
     rspack: (config, { appendPlugins, isProd }) => {
