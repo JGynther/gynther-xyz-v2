@@ -1,11 +1,13 @@
 {
-  "name": "test",
   "private": true,
-  "version": "1.0.0",
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
   },
   "dependencies": {
     "million": "latest",
@@ -17,6 +19,9 @@
     "@rsbuild/plugin-react": "^0.6.4",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "oxlint": "^0.2.18",
     "typescript": "^5.4.2"
   }
 }
