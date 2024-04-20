@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "rsbuild dev --open",
+    "dev": "rsbuild dev",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
     "prepare": "husky"
