@@ -8,6 +8,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "million": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
