@@ -3,5 +3,10 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
 }
