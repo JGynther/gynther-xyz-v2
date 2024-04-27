@@ -3,11 +3,13 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import million from "million/compiler";
 import UnoCSS from "@unocss/postcss";
 
+import { pluginContentBuilder } from "./src/lib/pluginContentBuilder";
+
 export default defineConfig({
   html: {
     title: "Joona Gynther",
   },
-  plugins: [pluginReact()],
+  plugins: [pluginReact(), pluginContentBuilder()],
   tools: {
     rspack: (config, { appendPlugins, isProd }) => {
       isProd && appendPlugins(million.rspack({ auto: true, telemetry: false }));
