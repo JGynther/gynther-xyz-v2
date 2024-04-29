@@ -21,7 +21,7 @@ const parseFrontMatter = (markdownString: string): Blog => {
     attributes[key] = value.join().replaceAll('"', "").trim();
   });
 
-  return { frontMatter: attributes, content: content.join() };
+  return { frontMatter: attributes, content: content.join("---") };
 };
 
 const buildMarkdownBlogs = (blogsDir: string): Blogs => {
@@ -33,7 +33,7 @@ const buildMarkdownBlogs = (blogsDir: string): Blogs => {
   });
 
   blogs.forEach((blog) => {
-    blog.content = parse(blog.content) as string;
+    blog.content = parse(blog.content, { async: false, gfm: true }) as string;
   });
 
   return blogs;
