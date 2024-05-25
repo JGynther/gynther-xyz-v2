@@ -19,14 +19,14 @@
   "devDependencies": {
     "@rsbuild/core": "^0.6.4",
     "@rsbuild/plugin-react": "^0.6.4",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
-    "@unocss/postcss": "^0.59.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "oxlint": "^0.2.18",
-    "typescript": "^5.4.2",
-    "unocss": "^0.59.4"
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.2"
   }
 }

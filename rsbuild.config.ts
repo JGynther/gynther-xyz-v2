@@ -1,7 +1,7 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
+import type { AcceptedPlugin } from "postcss";
 import million from "million/compiler";
-import UnoCSS from "@unocss/postcss";
 
 import { pluginContentBuilder } from "./src/lib/pluginContentBuilder";
 
@@ -17,7 +17,7 @@ export default defineConfig({
     },
     postcss: {
       postcssOptions: {
-        plugins: [UnoCSS()],
+        plugins: ["tailwindcss" as unknown as AcceptedPlugin],
       },
     },
   },
