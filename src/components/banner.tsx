@@ -13,4 +13,9 @@ function Banner() {
   return <pre className="font-mono text-[6px] md:text-[10px]">{BANNER}</pre>;
 }
 
+function BannerSmall() {
+  return <pre className="font-mono text-[6px]">{BANNER}</pre>;
+}
+
 export default Banner;
+export { BannerSmall };
