@@ -3,16 +3,16 @@ import Button from "@components/button";
 
 const link = "github.com/JGynther/gynther-xyz-v2";
 
-const App = () => {
+const Home = () => {
   return (
     <div className="h-full flex flex-col justify-between">
       <div>
-        <header className="pb-10">
+        <header className="pb-20">
           <Banner />
         </header>
 
         <div className="tracking-wider text-sm md:text-base">
-          <h1 className="text-lg">Hi, I'm Joona.</h1>
+          <h1 className="font-semibold mb-3">Hi, I'm Joona.</h1>
           <h4 className="font-extralight">
             Associate Solutions Architect @ Amazon Web Services
           </h4>
@@ -21,14 +21,14 @@ const App = () => {
         <div className="pt-8">
           <a
             className="opacity-80 tracking-wider hover:opacity-100 transition"
-            href="/connect"
+            href="https://www.linkedin.com/in/joona-gynther/"
           >
-            Let's connect &rarr;
+            You can find me on LinkedIn &rarr;
           </a>
         </div>
 
         <div className="flex pt-14">
-          <Button link="/blog">Read my incoherent thoughts in a blog</Button>
+          <Button link="/ravings">Read my incoherent thoughts in a blog</Button>
         </div>
       </div>
 
@@ -39,4 +39,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;

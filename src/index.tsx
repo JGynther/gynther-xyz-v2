@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App";
 import StyleWrapper from "@components/wrapper";
+import Home from "@page/home";
 
 import Post from "@page/post";
 import { type Blogs } from "@lib/pluginContentBuilder/blog";
@@ -19,7 +19,7 @@ const blogs = BLOGS.map((blog) => ({
 }));
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
+  { path: "/", element: <Home /> },
   { path: "/ravings", element: <Ravings blogs={BLOGS} /> },
   ...blogs,
 ]);
