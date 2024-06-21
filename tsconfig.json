@@ -16,5 +16,5 @@
       "@page/*": ["./src/page/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "cdk"]
 }

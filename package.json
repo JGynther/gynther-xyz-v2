@@ -17,16 +17,20 @@
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-acm": "^3.600.0",
     "@rsbuild/core": "^0.6.4",
     "@rsbuild/plugin-react": "^0.6.4",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
+    "aws-cdk": "^2.147.0",
+    "aws-cdk-lib": "^2.147.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "oxlint": "^0.2.18",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2"
-  }
+  },
+  "type": "module"
 }

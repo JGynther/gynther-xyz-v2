@@ -1,0 +1,5 @@
+{
+    "app": "bunx tsx cdk/index.ts",
+    "build": "bun run build",
+    "versionReporting": "false"
+}
