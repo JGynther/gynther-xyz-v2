@@ -36,6 +36,12 @@ const buildMarkdownBlogs = (blogsDir: string): Blogs => {
     blog.content = parse(blog.content, { async: false, gfm: true }) as string;
   });
 
+  blogs.sort(
+    (a, b) =>
+      new Date(b.frontMatter.date || 0).getTime() -
+      new Date(a.frontMatter.date || 0).getTime()
+  );
+
   return blogs;
 };
 
