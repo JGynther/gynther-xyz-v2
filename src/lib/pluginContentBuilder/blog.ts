@@ -9,7 +9,7 @@ type FrontMatter = {
 };
 
 type Blog = { content: string; frontMatter: Partial<FrontMatter> };
-type Blogs = (Blog & { slug: string })[];
+type Blogs = (Blog & { slug: string; snippet: string })[];
 
 const parseFrontMatter = (markdownString: string): Blog => {
   const [_, rawFrontMatter, ...content] = markdownString.split("---");
@@ -24,12 +24,20 @@ const parseFrontMatter = (markdownString: string): Blog => {
   return { frontMatter: attributes, content: content.join("---") };
 };
 
+const snippet = (content: string) => `${content.slice(0, 200).trim()}...`;
+
 const buildMarkdownBlogs = (blogsDir: string): Blogs => {
   const fileList = readdirSync(blogsDir);
 
   const blogs = fileList.map((filename) => {
     const file = readFileSync(`${blogsDir}/${filename}`).toString();
-    return { slug: filename.replace(".md", ""), ...parseFrontMatter(file) };
+    const { frontMatter, content } = parseFrontMatter(file);
+    return {
+      slug: filename.replace(".md", ""),
+      snippet: snippet(content),
+      frontMatter,
+      content,
+    };
   });
 
   blogs.forEach((blog) => {
