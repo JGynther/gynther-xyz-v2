@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "fs";
-import { parse } from "marked";
+import type { Parser } from "@lib/pluginContentBuilder/marked";
 
 type FrontMatter = {
   title: string;
@@ -26,7 +26,7 @@ const parseFrontMatter = (markdownString: string): Blog => {
 
 const snippet = (content: string) => `${content.slice(0, 200).trim()}...`;
 
-const buildMarkdownBlogs = (blogsDir: string): Blogs => {
+const buildMarkdownBlogs = (blogsDir: string, parser: Parser): Blogs => {
   const fileList = readdirSync(blogsDir);
 
   const blogs = fileList.map((filename) => {
@@ -41,7 +41,10 @@ const buildMarkdownBlogs = (blogsDir: string): Blogs => {
   });
 
   blogs.forEach((blog) => {
-    blog.content = parse(blog.content, { async: false, gfm: true }) as string;
+    blog.content = parser.parse(blog.content, {
+      async: false,
+      gfm: true,
+    }) as string;
   });
 
   blogs.sort(
