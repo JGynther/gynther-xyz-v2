@@ -2,11 +2,11 @@ import { type Blog } from "@lib/pluginContentBuilder/blog";
 import { BannerSmall as Banner } from "@components/banner";
 
 type PostProps = {
-  content: Blog;
+  blog: Blog;
 };
 
-const Post = ({ content }: PostProps) => {
-  const h1 = `<h1>${content.frontMatter.title}</h1>`;
+const Post = ({ blog }: PostProps) => {
+  const h1 = `<h1>${blog.frontMatter.title}</h1>`;
   return (
     <div className="mx-auto max-w-prose">
       <a href="/">
@@ -14,7 +14,7 @@ const Post = ({ content }: PostProps) => {
       </a>
 
       <article
-        dangerouslySetInnerHTML={{ __html: h1 + content.content }}
+        dangerouslySetInnerHTML={{ __html: h1 + blog.content }}
         className="mt-14 prose prose-invert break-words"
       />
     </div>
