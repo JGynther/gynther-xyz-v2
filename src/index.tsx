@@ -15,7 +15,7 @@ import "./index.css";
 
 const blogs = BLOGS.map((blog) => ({
   path: `ravings/${blog.slug}`,
-  element: <Post content={blog} />,
+  element: <Post blog={blog} />,
 }));
 
 const router = createBrowserRouter([
