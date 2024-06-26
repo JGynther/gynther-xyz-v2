@@ -37,6 +37,7 @@ const createMarkedWithHighlighting = async () => {
   return new Marked(
     shikiHighlight({
       highlight(code, lang, _info) {
+        lang = lang.toLocaleLowerCase();
         assert(langs.includes(lang), "Language not included in constructor.");
 
         return highlighter.codeToHtml(code, {
