@@ -32,8 +32,13 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className="text-sm font-mono text-white text-opacity-50">
-        Made with no 💤 by me. <a href={"https://" + link}>{link}</a>
+      <footer className="text-sm font-mono text-white text-opacity-50 flex flex-col space-y-2">
+        <span>
+          <a href="/.json">.json</a>
+        </span>
+        <span>
+          Made with no 💤 by me. <a href={"https://" + link}>{link}</a>
+        </span>
       </footer>
     </div>
   );
