@@ -1,5 +1,5 @@
 import { type RsbuildPlugin } from "@rsbuild/core";
-import { buildMarkdownBlogs } from "./blog";
+import { buildMarkdownBlogs, type Blogs, type Blog } from "./blog";
 import type { Parser } from "./marked";
 
 const pluginContentBuilder = (
@@ -17,3 +17,4 @@ const pluginContentBuilder = (
 });
 
 export { pluginContentBuilder };
+export type { Blogs, Blog };

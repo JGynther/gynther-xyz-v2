@@ -1,12 +1,5 @@
-import { type Blogs } from "@lib/pluginContentBuilder/blog";
 import { BannerSmall as Banner } from "@components/banner";
-
-type BlogProps = {
-  blogs: Blogs;
-};
-
-const readTime = (content: string) =>
-  `${Math.ceil(content.split(" ").length / 225)} min read`;
+import { Link } from "react-router-dom";
 
 const date = (unformated: string = "") =>
   new Date(unformated).toLocaleDateString("en", {
@@ -15,27 +8,26 @@ const date = (unformated: string = "") =>
     year: "numeric",
   });
 
-const Ravings = ({ blogs }: BlogProps) => {
+const Ravings = () => {
   return (
     <div className="mx-auto max-w-screen-md">
-      <a href="/">
+      <Link to="/">
         <Banner />
-      </a>
+      </Link>
       <div className="flex flex-col space-y-10 mt-16">
-        {blogs.map((blog) => {
+        {BLOGS.map((blog) => {
           return (
-            <a
+            <Link
               key={blog.slug}
-              href={`ravings/${blog.slug}`}
+              to={`${blog.slug}`}
               className="border-2 rounded p-6 tracking-wider text-lg opacity-80 hover:bg-neutral-800 transition-colors"
             >
               {blog.frontMatter.title}
               <p className="text-sm mt-2 opacity-80">{blog.snippet}</p>
               <p className="text-xs mt-6 opacity-60">
-                {date(blog.frontMatter.date)} • {blog.frontMatter.author} •{" "}
-                {readTime(blog.content)}
+                {date(blog.frontMatter.date)} • {blog.frontMatter.author}
               </p>
-            </a>
+            </Link>
           );
         })}
       </div>
@@ -43,4 +35,4 @@ const Ravings = ({ blogs }: BlogProps) => {
   );
 };
 
-export default Ravings;
+export { Ravings as Component };

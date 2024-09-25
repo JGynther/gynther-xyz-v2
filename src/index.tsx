@@ -4,25 +4,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import StyleWrapper from "@components/wrapper";
 
-import Post from "@page/post";
-import { type Blogs } from "@lib/pluginContentBuilder/blog";
-declare const BLOGS: Blogs; // This gets replaced by Rsbuild based on the contentBuilder plugin
-
-import Ravings from "@page/ravings";
-
 import "./index.css";
 
 const blogs = BLOGS.map((blog) => ({
   path: `ravings/${blog.slug}`,
-  element: <Post blog={blog} />,
+  loader: () => fetch(`/blogs/${blog.slug}.json`),
+  lazy: () => import("@page/post"),
 }));
 
 const router = createBrowserRouter([
   { path: "/", lazy: () => import("@page/home") },
-  {
-    path: "/ravings",
-    element: <Ravings blogs={BLOGS} />,
-  },
+  { path: "/ravings", lazy: () => import("@page/ravings") },
   { path: "/hey", lazy: () => import("@page/hey") },
   ...blogs,
 ]);

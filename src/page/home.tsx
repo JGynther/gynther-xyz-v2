@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Banner from "@components/banner";
 import Button from "@components/button";
 
@@ -34,7 +36,7 @@ const Home = () => {
 
       <footer className="text-sm font-mono text-white text-opacity-50 flex flex-col space-y-2">
         <div className="space-x-5 mb-2">
-          <a href="/hey">Hey</a>
+          <Link to="/hey">Hey</Link>
           <a href="/.json">.json</a>
         </div>
         <div>

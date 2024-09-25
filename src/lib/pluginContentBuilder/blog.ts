@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, writeFileSync } from "fs";
 import type { Parser } from "@lib/pluginContentBuilder/marked";
 
 type FrontMatter = {
@@ -8,8 +8,12 @@ type FrontMatter = {
   [key: string]: string;
 };
 
-type Blog = { content: string; frontMatter: Partial<FrontMatter> };
-type Blogs = (Blog & { slug: string; snippet: string })[];
+type Blog = { content: string; frontMatter: FrontMatter };
+type Blogs = {
+  frontMatter: FrontMatter;
+  slug: string;
+  snippet: string;
+}[];
 
 const parseFrontMatter = (markdownString: string): Blog => {
   const [_, rawFrontMatter, ...content] = markdownString.split("---");
@@ -21,7 +25,10 @@ const parseFrontMatter = (markdownString: string): Blog => {
     attributes[key] = value.join().replaceAll('"', "").trim();
   });
 
-  return { frontMatter: attributes, content: content.join("---") };
+  return {
+    frontMatter: attributes as FrontMatter,
+    content: content.join("---"),
+  };
 };
 
 const snippet = (content: string) => `${content.slice(0, 200).trim()}...`;
@@ -32,28 +39,32 @@ const buildMarkdownBlogs = (blogsDir: string, parser: Parser): Blogs => {
   const blogs = fileList.map((filename) => {
     const file = readFileSync(`${blogsDir}/${filename}`).toString();
     const { frontMatter, content } = parseFrontMatter(file);
-    return {
-      slug: filename.replace(".md", ""),
-      snippet: snippet(content),
+    const slug = filename.replace(".md", "");
+    const parsedContent = parser.parse(content, { gfm: true }) as string;
+
+    const blog = {
+      slug,
       frontMatter,
-      content,
+      content: parsedContent,
+      snippet: snippet(content),
     };
+
+    writeFileSync(`./public/blogs/${blog.slug}.json`, JSON.stringify(blog));
+
+    return blog;
   });
 
-  blogs.forEach((blog) => {
-    blog.content = parser.parse(blog.content, {
-      async: false,
-      gfm: true,
-    }) as string;
-  });
-
-  blogs.sort(
-    (a, b) =>
-      new Date(b.frontMatter.date || 0).getTime() -
-      new Date(a.frontMatter.date || 0).getTime()
-  );
-
-  return blogs;
+  return blogs
+    .sort(
+      (a, b) =>
+        new Date(b.frontMatter.date || 0).getTime() -
+        new Date(a.frontMatter.date || 0).getTime()
+    )
+    .map((blog) => ({
+      frontMatter: blog.frontMatter,
+      snippet: blog.snippet,
+      slug: blog.slug,
+    }));
 };
 
 export { buildMarkdownBlogs, type Blog, type Blogs };

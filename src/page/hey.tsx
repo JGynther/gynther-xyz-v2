@@ -1,5 +1,6 @@
 import { BannerSmall as Banner } from "@components/banner";
 import { Center } from "@components/wrapper";
+import { Link } from "react-router-dom";
 
 type EntryProps = { date: string } & React.PropsWithChildren;
 
@@ -25,12 +26,14 @@ const Thought = ({ children }: React.PropsWithChildren) => {
 const Hey = () => {
   return (
     <Center>
-      <a href="/">
+      <Link to="/">
         <Banner />
-      </a>
+      </Link>
+
       <h3 className="mt-16 text-3xl font-bold">
         I think about a lot of stuff. Here is some of it.
       </h3>
+
       <Entry date="25.9.2024">
         <Thought>
           This is my first try at this format. Here is a dump of things that

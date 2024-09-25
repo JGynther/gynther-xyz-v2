@@ -14,3 +14,7 @@ dist/
 
 # AWS CDK
 cdk.out
+
+# Blogs
+# Ignored as these are synthesized based on the actual .md
+public/blogs/*.json

@@ -1,17 +1,16 @@
-import { type Blog } from "@lib/pluginContentBuilder/blog";
+import { type Blog } from "@lib/pluginContentBuilder";
 import { BannerSmall as Banner } from "@components/banner";
+import { useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-type PostProps = {
-  blog: Blog;
-};
-
-const Post = ({ blog }: PostProps) => {
+const Post = () => {
+  const blog = useLoaderData() as Blog;
   const h1 = `<h1>${blog.frontMatter.title}</h1>`;
   return (
     <div className="mx-auto max-w-prose">
-      <a href="/">
+      <Link to="/">
         <Banner />
-      </a>
+      </Link>
 
       <article
         dangerouslySetInnerHTML={{ __html: h1 + blog.content }}
@@ -21,4 +20,4 @@ const Post = ({ blog }: PostProps) => {
   );
 };
 
-export default Post;
+export { Post as Component };
