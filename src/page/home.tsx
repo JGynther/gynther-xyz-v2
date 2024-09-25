@@ -33,15 +33,16 @@ const Home = () => {
       </div>
 
       <footer className="text-sm font-mono text-white text-opacity-50 flex flex-col space-y-2">
-        <span>
+        <div className="space-x-5 mb-2">
+          <a href="/hey">Hey</a>
           <a href="/.json">.json</a>
-        </span>
-        <span>
+        </div>
+        <div>
           Made with no 💤 by me. <a href={"https://" + link}>{link}</a>
-        </span>
+        </div>
       </footer>
     </div>
   );
 };
 
-export default Home;
+export { Home as Component };

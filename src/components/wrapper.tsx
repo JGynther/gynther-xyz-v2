@@ -8,4 +8,9 @@ const StyleWrapper = ({ children }: PropsWithChildren) => {
   );
 };
 
+const Center = ({ children }: PropsWithChildren) => (
+  <div className="mx-auto max-w-screen-md">{children}</div>
+);
+
 export default StyleWrapper;
+export { Center };

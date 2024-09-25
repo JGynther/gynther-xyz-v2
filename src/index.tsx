@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import StyleWrapper from "@components/wrapper";
-import Home from "@page/home";
 
 import Post from "@page/post";
 import { type Blogs } from "@lib/pluginContentBuilder/blog";
@@ -19,8 +18,12 @@ const blogs = BLOGS.map((blog) => ({
 }));
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  { path: "/ravings", element: <Ravings blogs={BLOGS} /> },
+  { path: "/", lazy: () => import("@page/home") },
+  {
+    path: "/ravings",
+    element: <Ravings blogs={BLOGS} />,
+  },
+  { path: "/hey", lazy: () => import("@page/hey") },
   ...blogs,
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root")!);
