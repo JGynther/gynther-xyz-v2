@@ -12,26 +12,26 @@
   "dependencies": {
     "marked": "^12.0.2",
     "million": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3",
-    "shiki": "^1.9.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
+    "shiki": "^1.16.2"
   },
   "devDependencies": {
-    "@aws-sdk/client-acm": "^3.600.0",
-    "@rsbuild/core": "^0.6.4",
-    "@rsbuild/plugin-react": "^0.6.4",
-    "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.2.75",
-    "@types/react-dom": "^18.2.24",
-    "aws-cdk": "^2.147.0",
-    "aws-cdk-lib": "^2.147.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "@aws-sdk/client-acm": "^3.645.0",
+    "@rsbuild/core": "^0.6.15",
+    "@rsbuild/plugin-react": "^0.6.15",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "aws-cdk": "^2.156.0",
+    "aws-cdk-lib": "^2.156.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "oxlint": "^0.2.18",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.2"
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4"
   },
   "type": "module"
 }
