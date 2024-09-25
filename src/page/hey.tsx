@@ -44,7 +44,8 @@ const Hey = () => {
           I have been working on a similarity search engine for Magic: The
           Gathering cards. Recently it has lead me on interesting paths: writing
           a custom Recursive Decent Parser to render card text, encoding
-          text-heavy data for efficient transfer and designing web applications.
+          text-heavy data for efficient transfer and consistent hashing of card
+          names.
           <br />
           <br />
           Instead of a 3-tier thing, I am planning of just using S3. And have
