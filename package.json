@@ -11,14 +11,15 @@
   },
   "dependencies": {
     "marked": "^12.0.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0-rc-5c56b873-20241107",
+    "react-dom": "^19.0.0-rc-5c56b873-20241107",
     "react-router-dom": "^6.28.0",
     "shiki": "^1.22.2"
   },
   "devDependencies": {
     "@aws-sdk/client-acm": "^3.687.0",
     "@rsbuild/core": "^1.1.0",
+    "@rsbuild/plugin-babel": "^1.0.3",
     "@rsbuild/plugin-react": "^1.0.7",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20.17.6",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^18.3.1",
     "aws-cdk": "^2.166.0",
     "aws-cdk-lib": "^2.166.0",
+    "babel-plugin-react-compiler": "^19.0.0-beta-63b359f-20241101",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "oxlint": "^0.2.18",
