@@ -1,6 +1,8 @@
 import { BannerSmall as Banner } from "@components/banner";
 import { Link } from "react-router-dom";
 
+import preface from "../../public/blogs/preface.json";
+
 const date = (unformated: string = "") =>
   new Date(unformated).toLocaleDateString("en", {
     month: "long",
@@ -15,7 +17,7 @@ const Ravings = () => {
         <Banner />
       </Link>
       <div className="flex flex-col space-y-10 mt-16">
-        {BLOGS.map((blog) => {
+        {preface.map((blog) => {
           return (
             <Link
               key={blog.slug}

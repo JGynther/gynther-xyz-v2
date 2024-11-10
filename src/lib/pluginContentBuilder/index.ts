@@ -4,14 +4,13 @@ import type { Parser } from "./marked";
 
 const pluginContentBuilder = (
   parser: Parser,
-  blogsDir = "blogs"
+  blogsDir = "blogs",
 ): RsbuildPlugin => ({
   name: "custom-content-builder",
   setup(api) {
-    api.modifyRsbuildConfig((config) => {
-      config.source ||= {};
-      config.source.define ||= {};
-      config.source.define.BLOGS = buildMarkdownBlogs(blogsDir, parser);
+    // Runs before each build.
+    api.onBeforeEnvironmentCompile(() => {
+      buildMarkdownBlogs(blogsDir, parser);
     });
   },
 });

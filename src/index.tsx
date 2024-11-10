@@ -5,8 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StyleWrapper from "@components/wrapper";
 
 import "./index.css";
+import preface from "../public/blogs/preface.json";
 
-const blogs = BLOGS.map((blog) => ({
+const blogs = preface.map((blog) => ({
   path: `ravings/${blog.slug}`,
   loader: () => fetch(`/blogs/${blog.slug}.json`),
   lazy: () => import("@page/post"),
@@ -25,5 +26,5 @@ root.render(
     <StyleWrapper>
       <RouterProvider router={router} />
     </StyleWrapper>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

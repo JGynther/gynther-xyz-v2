@@ -33,7 +33,7 @@ const parseFrontMatter = (markdownString: string): Blog => {
 
 const snippet = (content: string) => `${content.slice(0, 200).trim()}...`;
 
-const buildMarkdownBlogs = (blogsDir: string, parser: Parser): Blogs => {
+const buildMarkdownBlogs = (blogsDir: string, parser: Parser) => {
   const fileList = readdirSync(blogsDir);
 
   const blogs = fileList.map((filename) => {
@@ -54,17 +54,19 @@ const buildMarkdownBlogs = (blogsDir: string, parser: Parser): Blogs => {
     return blog;
   });
 
-  return blogs
+  const preface = blogs
     .sort(
       (a, b) =>
         new Date(b.frontMatter.date || 0).getTime() -
-        new Date(a.frontMatter.date || 0).getTime()
+        new Date(a.frontMatter.date || 0).getTime(),
     )
     .map((blog) => ({
       frontMatter: blog.frontMatter,
       snippet: blog.snippet,
       slug: blog.slug,
     }));
+
+  writeFileSync(`./public/blogs/preface.json`, JSON.stringify(preface));
 };
 
 export { buildMarkdownBlogs, type Blog, type Blogs };
