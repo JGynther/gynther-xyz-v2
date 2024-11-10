@@ -1,7 +1,8 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginBabel } from "@rsbuild/plugin-babel";
 import { pluginReact } from "@rsbuild/plugin-react";
-import type { AcceptedPlugin } from "postcss";
+
+import tailwindcss from "tailwindcss";
 
 import { pluginContentBuilder } from "./src/lib/pluginContentBuilder";
 import createMarkedWithHighlighting from "./src/lib/pluginContentBuilder/marked";
@@ -30,7 +31,7 @@ export default defineConfig(async () => {
       },
       postcss: {
         postcssOptions: {
-          plugins: ["tailwindcss" as unknown as AcceptedPlugin],
+          plugins: [tailwindcss()],
         },
       },
     },
