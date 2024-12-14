@@ -1,11 +1,7 @@
 import { App, Stack, CfnOutput } from "aws-cdk-lib";
 import { Bucket } from "aws-cdk-lib/aws-s3";
-import {
-  OriginAccessIdentity,
-  Distribution,
-  ViewerProtocolPolicy,
-} from "aws-cdk-lib/aws-cloudfront";
-import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/aws-cloudfront";
+import { S3BucketOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 
@@ -14,15 +10,13 @@ class StaticWebsite extends Stack {
     super(context, id);
 
     const websiteBucket = new Bucket(this, "websiteBucket");
-    const originAccessIdentity = new OriginAccessIdentity(this, "OAI");
-    websiteBucket.grantRead(originAccessIdentity);
 
     // prettier-ignore
     const certificate = Certificate.fromCertificateArn(this, "certificate", certificateArn);
 
     const cloudfront = new Distribution(this, "cloudfront", {
       defaultBehavior: {
-        origin: new S3Origin(websiteBucket, { originAccessIdentity }),
+        origin: S3BucketOrigin.withOriginAccessControl(websiteBucket),
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       defaultRootObject: "index.html",
