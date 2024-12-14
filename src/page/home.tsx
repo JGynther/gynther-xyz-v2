@@ -23,9 +23,8 @@ const Home = () => {
             that is on stage
           </h4>
           <br />
-          <h4 className="opacity-60">
-            Associate Solutions Architect @ Amazon Web Services
-          </h4>
+          <h4 className="opacity-60">Currently vacationing</h4>
+          <h4 className="opacity-60">Previously @ Amazon Web Services</h4>
         </div>
 
         <div className="pt-12">
