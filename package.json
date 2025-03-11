@@ -10,28 +10,29 @@
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
   },
   "dependencies": {
-    "marked": "^12.0.2",
+    "marked": "^15.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.29.0",
-    "shiki": "^1.29.2"
+    "react-router-dom": "^7.1.5",
+    "shiki": "^2.2.0"
   },
   "devDependencies": {
     "@aws-sdk/client-acm": "^3.738.0",
     "@rsbuild/core": "^1.2.3",
     "@rsbuild/plugin-babel": "^1.0.3",
     "@rsbuild/plugin-react": "^1.1.0",
+    "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^20.17.16",
+    "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
-    "@types/react-dom": "^18.3.5",
+    "@types/react-dom": "^19.0.3",
     "aws-cdk": "^2.177.0",
     "aws-cdk-lib": "^2.177.0",
-    "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
+    "babel-plugin-react-compiler": "^19.0.0-beta-714736e-20250131",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
-    "oxlint": "^0.2.18",
-    "tailwindcss": "^3.4.17",
+    "oxlint": "^0.15.9",
+    "tailwindcss": "^4.0.3",
     "typescript": "^5.7.3"
   },
   "type": "module"

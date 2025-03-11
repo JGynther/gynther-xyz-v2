@@ -2,8 +2,6 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginBabel } from "@rsbuild/plugin-babel";
 import { pluginReact } from "@rsbuild/plugin-react";
 
-import tailwindcss from "tailwindcss";
-
 import { pluginContentBuilder } from "./src/lib/pluginContentBuilder";
 import createMarkedWithHighlighting from "./src/lib/pluginContentBuilder/marked";
 
@@ -29,11 +27,9 @@ export default defineConfig(async () => {
           ignored: /preface.json/,
         },
       },
-      postcss: {
-        postcssOptions: {
-          plugins: [tailwindcss()],
-        },
-      },
+      postcss: () => ({
+        postcssOptions: { plugins: ["@tailwindcss/postcss" as any] },
+      }),
     },
   };
 });
