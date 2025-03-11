@@ -26,6 +26,11 @@ class StaticWebsite extends Stack {
           responseHttpStatus: 200,
           responsePagePath: "/index.html",
         },
+        {
+          httpStatus: 403,
+          responseHttpStatus: 200,
+          responsePagePath: "/index.html",
+        },
       ],
       domainNames: ["gynther.xyz"],
       certificate,
@@ -36,6 +41,8 @@ class StaticWebsite extends Stack {
     new BucketDeployment(this, "deployment", {
       destinationBucket: websiteBucket,
       sources: [Source.asset("dist")],
+      distribution: cloudfront,
+      prune: true,
     });
   }
 }
