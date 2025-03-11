@@ -7,7 +7,10 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
+      "oxlint",
+      "tsc --noEmit"
+    ]
   },
   "dependencies": {
     "marked": "^15.0.7",
