@@ -18,7 +18,7 @@ As arbitrary length text is projected into a fixed-length vector, it is essentia
 
 Let's imagine we have numbers where every digit is either a 1 or a 4. We have a need to understand how our collection of 1s and 4s relate to each other. We can represent the amount of each in 2-dimensional space as a (x, y) coordinate.
 
-![Visualized 1s and 4s in 2d-space](/semantic-magic/1-4-embedding.png)
+![Visualized 1s and 4s in 2d-space](/static/images/semantic-magic/1-4-embedding.png)
 
 We can see that numbers that have a lot of 4s are physically close each other, same as numbers with a lot of 1s. Numbers with a mix would fall somewhere in between. We could add any number of dimensions to capture the same relationship between any numbers, but the visualizations are not meaningful past 3-dimensional space. But that does not matter. The idea, and the math, work the same in any n-dimensional space.
 
@@ -28,7 +28,7 @@ In reality you use a machine learning model to learn these relationships and con
 
 It is not a perfect process but that does not matter, it is _very_ useful.
 
-![Visualized 1s and 4s in 3d-space](/semantic-magic/1-4-2-embedding.png)
+![Visualized 1s and 4s in 3d-space](/static/images/semantic-magic/1-4-2-embedding.png)
 
 ### In practice
 
@@ -55,7 +55,7 @@ Magic cards will act as a proxy to anything defined in complex natural language 
 
 ### Anatomy
 
-![Anatomy of a magic card](/semantic-magic/anatomy.png)
+![Anatomy of a magic card](/static/images/semantic-magic/anatomy.png)
 
 A Magic card is made up of ~5 attributes that ultimately define how it works: name, mana cost, type line, power/toughness and most importantly rules text. This is simplifying it as there are also attributes that can be derived from these like the color of a card.
 
@@ -173,7 +173,7 @@ Running the search for K=5 for the card "Dark Ritual" returns the following resu
 | Songs of the Damned | 0.8036735  | Add {B} for each creature card in your graveyard. |
 | Battle Hymn         | 0.7631681  | Add {R} for each creature you control.            |
 
-![Results](/semantic-magic/results.png)
+![Results](/static/images/semantic-magic/results.png)
 
 So how do we actually know if it is working? That is a hard question to answer. Similarity on language is at least partly subjective. There might not be a canonical answer to which piece of text is the most similar. Human review is likely the best option to see if the results are reasonable.
 
@@ -181,12 +181,12 @@ As an extra sanity check we can try to visualize our embeddings using [dimension
 
 My hypothesis is that if cards of the same type form reasonable looking clusters our method is probably working.
 
-![Dimensionally reduced 2D graph](/semantic-magic/dimred.png)
-You can view visualization code [here](https://github.com/JGynther/semantic-magic/blob/main/visualize.py).
+![Dimensionally reduced 2D graph](/static/images/semantic-magic/dimred.png)
+You can view visualization code [here](https://github.com/JGynther/static/images/semantic-magic/blob/main/visualize.py).
 
 ### Bonus: Performance
 
-As said embeddings make for efficient similarity searching, but how efficient exactly? To test this I ran two performance tests [performance_naive.py](https://github.com/JGynther/semantic-magic/blob/main/performance_naive.py) and [performance_batched.py](https://github.com/JGynther/semantic-magic/blob/main/performance_batched.py). Both tests do a kNN search with k=5 for 10 000 randomly selected cards and repeat it 10 times.
+As said embeddings make for efficient similarity searching, but how efficient exactly? To test this I ran two performance tests [performance_naive.py](https://github.com/JGynther/static/images/semantic-magic/blob/main/performance_naive.py) and [performance_batched.py](https://github.com/JGynther/static/images/semantic-magic/blob/main/performance_batched.py). Both tests do a kNN search with k=5 for 10 000 randomly selected cards and repeat it 10 times.
 
 Both tests were run on M1 MacBook Air with Python 3.11.6.
 

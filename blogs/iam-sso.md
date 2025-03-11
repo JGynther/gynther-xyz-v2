@@ -36,30 +36,30 @@ Next step would be choosing your Identity Provider. Identity center defaults to 
 ### Next, let's create a user
 
 In Identity Center console, on the right, navigate to users. Create a user for yourself.
-![IAM Identity Center user creation form](/iam-sso/user.png)
+![IAM Identity Center user creation form](/static/images/iam-sso/user.png)
 Click next. We are prompted to add our user to a group. Choose **Create group**.
 
 ### Creating a group and permissions
 
 Enter a group name like `Admin` and optionally a description. Choose **create**. Next go back to your user creation tab. Refresh groups and assign your user to the group you just created.
 
-![](/iam-sso/group.png)
+![](/static/images/iam-sso/group.png)
 
 Click next and create your user. After your user has been created, they will be sent a email verification link.
 
 Next, we need to create a _permission set_ to attach to our group. On the right, navigate to **Permission sets** under **Multi-account permissions**. Under **Permission sets** choose **Create permission set**.
 
-![](/iam-sso/permission-set.png)
+![](/static/images/iam-sso/permission-set.png)
 
 > NOTE: no dark mode for this page :/
 
 Choose **Predefined permission set** and **AdministratorAccess**. Click next. You can leave details as default. Here the most important setting is _Session duration_ which defines how long a user can stay logged in for. Click next and create your permission set.
 
-![](/iam-sso/assign.png)
+![](/static/images/iam-sso/assign.png)
 
 Next, on the right, under **Multi-account permissions** choose **AWS accounts**. Under root, select your account. Choose **Assign users or groups**. Select the group and permission set you created. Click submit. Wait for the process to finish.
 
-![](/iam-sso/url.png)
+![](/static/images/iam-sso/url.png)
 
 Back in the Identity Center dashboard you can find your _AWS access portal URL_ which looks something like the above. If you verified your user's email, you can now login to the SSO portal using this URL.
 
