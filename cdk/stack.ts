@@ -43,6 +43,7 @@ class StaticWebsite extends Stack {
       sources: [Source.asset("dist")],
       distribution: cloudfront,
       prune: true,
+      exclude: [".DS_Store"],
     });
   }
 }
