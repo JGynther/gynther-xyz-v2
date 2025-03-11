@@ -43,10 +43,10 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className="text-sm font-mono text-white text-opacity-50 flex flex-col space-y-2">
+      <footer className="text-sm font-mono text-white/50 flex flex-col space-y-2">
         <div className="space-x-5 mb-2">
           <Link to="/hey">Hey</Link>
-          <a href="/.json">.json</a>
+          <a href="/api.json">API</a>
         </div>
         <div>
           Made with no 💤 by me. <a href={"https://" + link}>{link}</a>

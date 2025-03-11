@@ -8,7 +8,7 @@ const Entry = ({ date, children }: EntryProps) => {
   return (
     <div className="flex flex-col my-14" id={date}>
       <div className="text-2xl font-bold">{date}</div>
-      <div className="pl-6 py-6 border-l-2 ml-2 mt-2 space-y-12 border-dashed border-white border-opacity-20">
+      <div className="pl-6 py-6 border-l-2 ml-2 mt-2 space-y-12 border-dashed border-white/20">
         {children}
       </div>
     </div>
@@ -17,7 +17,7 @@ const Entry = ({ date, children }: EntryProps) => {
 
 const Thought = ({ children }: React.PropsWithChildren) => {
   return (
-    <div className="border-l-2 pl-6 py-1 text-white text-opacity-80 border-white border-opacity-20">
+    <div className="border-l-2 pl-6 py-1 text-white/80 border-white/20">
       {children}
     </div>
   );
