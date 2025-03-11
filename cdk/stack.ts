@@ -1,9 +1,15 @@
-import { App, Stack, CfnOutput } from "aws-cdk-lib";
-import { Bucket } from "aws-cdk-lib/aws-s3";
-import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/aws-cloudfront";
-import { S3BucketOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
-import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
+import { App, CfnOutput, Stack } from "aws-cdk-lib";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
+import {
+  CachePolicy,
+  Distribution,
+  HttpVersion,
+  ResponseHeadersPolicy,
+  ViewerProtocolPolicy,
+} from "aws-cdk-lib/aws-cloudfront";
+import { S3BucketOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { Bucket } from "aws-cdk-lib/aws-s3";
+import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 
 class StaticWebsite extends Stack {
   constructor(context: App, id: string, certificateArn: string) {
@@ -17,7 +23,10 @@ class StaticWebsite extends Stack {
     const cloudfront = new Distribution(this, "cloudfront", {
       defaultBehavior: {
         origin: S3BucketOrigin.withOriginAccessControl(websiteBucket),
+        responseHeadersPolicy: ResponseHeadersPolicy.SECURITY_HEADERS,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        cachePolicy: CachePolicy.CACHING_OPTIMIZED,
+        compress: true,
       },
       defaultRootObject: "index.html",
       errorResponses: [
@@ -33,6 +42,7 @@ class StaticWebsite extends Stack {
         },
       ],
       domainNames: ["gynther.xyz"],
+      httpVersion: HttpVersion.HTTP2_AND_3,
       certificate,
     });
 
