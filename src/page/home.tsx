@@ -43,10 +43,18 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className="text-sm font-mono text-white/50 flex flex-col space-y-2">
-        <div className="space-x-5 mb-2">
-          <Link to="/hey">Hey</Link>
-          <a href="/api.json">API</a>
+      <footer className="text-sm font-mono text-white/50 flex flex-col space-y-6">
+        <div className="space-y-2">
+          <div className="space-x-5">
+            <Link to="/hey">Hey</Link>
+            <a href="/api.json">API</a>
+          </div>
+          <div>
+            Email{" "}
+            <span className="bg-neutral-800 py-1 px-3 rounded">
+              am9vbmErYjY0QGd5bnRoZXIueHl6Cg==
+            </span>
+          </div>
         </div>
         <div>
           Made with no 💤 by me. <a href={"https://" + link}>{link}</a>
