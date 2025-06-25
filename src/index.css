@@ -5,3 +5,15 @@ html {
     /* Equal to Tailwind bg-neutral-900 */
     background-color: rgb(23 23 23);
 }
+
+/* Disable adding quote marks to block-quotes: https://github.com/tailwindlabs/tailwindcss-typography/issues/66 */
+@utility prose {
+    blockquote {
+        p {
+            &:first-of-type::before,
+            &:last-of-type::after {
+                content: none;
+            }
+        }
+    }
+}
