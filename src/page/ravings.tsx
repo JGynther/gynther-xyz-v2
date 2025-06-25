@@ -2,13 +2,7 @@ import { BannerSmall as Banner } from "@components/banner";
 import { Link } from "react-router-dom";
 
 import preface from "../../public/blogs/preface.json";
-
-const date = (unformated: string = "") =>
-  new Date(unformated).toLocaleDateString("en", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+import { date } from "@lib/date";
 
 const Ravings = () => {
   return (
