@@ -24,7 +24,7 @@ export default defineConfig(async () => {
     tools: {
       rspack: {
         watchOptions: {
-          ignored: /preface.json/,
+          ignored: /preface.json|api.json/,
         },
       },
       postcss: () => ({

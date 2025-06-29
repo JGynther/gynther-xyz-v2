@@ -9,7 +9,7 @@ type FrontMatter = {
 };
 
 type Blog = { content: string; frontMatter: FrontMatter };
-type Blogs = {
+type Preface = {
   frontMatter: FrontMatter;
   slug: string;
   snippet: string;
@@ -29,6 +29,28 @@ const parseFrontMatter = (markdownString: string): Blog => {
     frontMatter: attributes as FrontMatter,
     content: content.join("---"),
   };
+};
+
+const buildJsonApi = (preface: Preface) => {
+  const titles = [
+    { what: "Senior Cloud Developer, Research", where: "F-Secure Corporation" },
+  ];
+
+  const links = [
+    { service: "LinkedIn", url: "https://www.linkedin.com/in/joona-gynther/" },
+    { service: "Threads", url: "https://www.threads.net/@gyntherjoona" },
+    { service: "Github", url: "https://github.com/JGynther" },
+  ];
+
+  const jsonApi = {
+    "who-am-i": { titles, links },
+    blog: preface.map((blog) => ({
+      ...blog.frontMatter,
+      url: `https://gynther.xyz/ravings/${blog.slug}`,
+    })),
+  };
+
+  return jsonApi;
 };
 
 const snippet = (content: string) => `${content.slice(0, 200).trim()}...`;
@@ -54,7 +76,7 @@ const buildMarkdownBlogs = (blogsDir: string, parser: Parser) => {
     return blog;
   });
 
-  const preface = blogs
+  const preface: Preface = blogs
     .sort(
       (a, b) =>
         new Date(b.frontMatter.date || 0).getTime() -
@@ -67,6 +89,9 @@ const buildMarkdownBlogs = (blogsDir: string, parser: Parser) => {
     }));
 
   writeFileSync(`./public/blogs/preface.json`, JSON.stringify(preface));
+
+  const jsonApi = buildJsonApi(preface);
+  writeFileSync("./public/api.json", JSON.stringify(jsonApi));
 };
 
-export { buildMarkdownBlogs, type Blog, type Blogs };
+export { buildMarkdownBlogs, type Blog, type Preface };
